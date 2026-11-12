@@ -32,11 +32,11 @@ Chọn điểm trong danh sách Objects hoặc trên ảnh, chuột phải hoặ
 
 | Nhóm ảnh | Số ảnh | Số skeleton đã gán | Số người dưới 60 px (không gán) | Số poster / gương / màn hình bỏ qua | Thời gian (phút) |
 |---|---:|---:|---:|---:|---:|
-| `easy` | 5 | 5 | 0 | 0 | 15 |
-| `occluded` | 3 | 6 | 0 | 0 | 15 |
-| `back` | 2 | 4 | 0 | 0 | 10 |
-| `small` | 1 | 2 | 1 | 0 | 10 |
-| `crowd` | 1 | 3 | 1 | 0 | 15 |
+| `easy` | 4 | 4 | 0 | 0 | 12 |
+| `occluded` | 3 | 5 | 0 | 0 | 18 |
+| `back` | 3 | 6 | 0 | 0 | 15 |
+| `small` | 1 | 1 | 1 | 0 | 10 |
+| `crowd` | 1 | 4 | 1 | 0 | 15 |
 | `faces` | 8 | 8 | — | 0 | 20 |
 
 - Số ảnh người đã xong ở mốc phút 105: 12 / 12
@@ -63,8 +63,8 @@ Mã lỗi dùng đúng một trong: `lr_swap`, `vis_flag`, `position`, `missing`
 | Ảnh | Người / mặt | Điểm | Mã lỗi | Ghi chú | Đã sửa? |
 |---|---|---|---|---|---|
 | `face_279764.jpg` | Mặt tóc che #1 | `all` | `ok` | Tất cả 13 điểm đều v=2, tóc không che điểm nào đáng kể, gán đúng ngay từ đầu không cần sửa | Rồi |
-| `face_256814.jpg` | Mặt kính râm #1 | `left_eye_outer`, `left_eye_inner`, `right_eye_inner`, `right_eye_outer`, `left_ear_tragion`, `right_ear_tragion`, `mouth_left`, `mouth_right` | `vis_flag` | Kính râm che toàn bộ mắt và một phần tai/miệng, đặt cờ v=1 (occluded) cho 8 điểm bị che | Rồi |
-| `face_223746.jpg` | Mặt nghiêng #1 | `left_ear_tragion`, `right_ear_tragion` | `vis_flag` | Mặt quay nghiêng, tai phía sau bị khuất hoàn toàn; đặt v=1 vì vẫn ước lượng được vị trí | Rồi |
+| `face_256814.jpg` | Mặt kính râm #1 | `left_eye_outer`, `left_eye_inner`, `left_eye_upper`, `left_eye_lower`, `right_eye_outer`, `right_eye_inner`, `right_eye_upper`, `right_eye_lower` | `vis_flag` | Kính râm che toàn bộ vùng mắt cả hai bên, đặt cờ v=1 (occluded) cho 8 điểm mắt | Rồi |
+| `face_223746.jpg` | Mặt nghiêng #1 | `right_eye_outer`, `right_eye_inner`, `mouth_right` | `vis_flag` | Mặt quay nghiêng, nửa mặt bên phải (theo người) bị khuất một phần; đặt v=1 vì vẫn ước lượng được vị trí | Rồi |
 | `000000438099.jpg` | Người nhỏ xa #1 | `all` | `ok` | Người nhỏ ở xa, khung xương khớp tỷ lệ cơ thể, không phát hiện lỗi nào khi review lại | Rồi |
 | `000000130816.jpg` | Người trong đám đông #4 | `all` | `missing` | Người ở rìa khung bị che một phần thân dưới, ban đầu bỏ sót; đã bổ sung skeleton khi review | Rồi |
 | `000000210604.jpg` | Người quay lưng #2 | `left_wrist`, `right_wrist` | `lr_swap` | Nhìn từ sau lưng dễ nhầm trái/phải; trung tâm x các điểm trái nằm bên phải x các điểm phải — đã đảo lại đúng theo góc nhìn của người | Rồi |
@@ -88,7 +88,7 @@ Tự kiểm tay trong file JSON:
 | File | Người / mặt kiểm (ảnh, thứ tự) | Số phần tử `keypoints` | Điểm `outside` ra `v = 0`, `occluded` ra `v = 1`? | `num_keypoints` khớp? |
 |---|---|---:|---|---|
 | `NguyenTheTung_persons.zip` | 000000027565.jpg #1 | 51 | Có | Có (17) |
-| `NguyenTheTung_persons.zip` | 000000122199.jpg #1 | 51 | Có | Có (15) |
+| `NguyenTheTung_persons.zip` | 000000122199.jpg #1 | 51 | Có | Có (16) |
 | `NguyenTheTung_faces.zip` | face_178208.jpg #1 | 39 | Có | Có (13) |
 
 Sau khi xuất, CVAT ghi `occluded` thành `v = 1` và `outside` thành `v = 0`. Tọa độ của điểm `outside` trong file là `0, 0` hay tọa độ cũ? Tọa độ cũ (CVAT 2.x giữ tọa độ cũ khi v = 0)
