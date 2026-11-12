@@ -8,7 +8,7 @@ Dữ liệu: 12 ảnh người COCO val2017 (Lin et al., 2014) và 8 ảnh chân
 
 - Họ tên: Nguyễn Thế Tùng
 - MSSV: 2A202603320
-- Email: hanng2k3@gmail.com
+- Email: 26ai.tungnt4@vinuni.edu.vn
 - Link repository: https://github.com/entity-solo/K5-L2B-DAY04-NguyenTheTung-2A202603320-KeypointPose
 - Phiên bản CVAT (Help → About): 2.82.0
 - Máy: hệ điều hành Windows · RAM 7.4 GB (Docker) · chạy CVAT chế độ đầy đủ
