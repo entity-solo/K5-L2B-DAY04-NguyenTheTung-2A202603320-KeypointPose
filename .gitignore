@@ -26,3 +26,9 @@ person_keypoints_train2017.json
 # Ground truth chỉ coach giữ
 coach_gt/
 *_gt.json
+
+# Model weights & local scripts
+*.pt
+*.task
+apply_autolabel.py
+keypoint_assistant_colab.ipynb

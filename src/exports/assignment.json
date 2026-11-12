@@ -1,0 +1,43 @@
+{
+ "mssv": "2A202603320",
+ "ten": "NguyenTheTung",
+ "pool_version": "d04-k5-v2",
+ "cvat_user": "soloentity",
+ "project": "d04-keypoint",
+ "persons": [
+  "000000027565.jpg",
+  "000000150500.jpg",
+  "000000336477.jpg",
+  "000000390585.jpg",
+  "000000399983.jpg",
+  "000000122199.jpg",
+  "000000179201.jpg",
+  "000000188804.jpg",
+  "000000163118.jpg",
+  "000000210604.jpg",
+  "000000438099.jpg",
+  "000000130816.jpg"
+ ],
+ "faces": [
+  "face_362568.jpg",
+  "face_85624.jpg",
+  "face_92028.jpg",
+  "face_223746.jpg",
+  "face_53580.jpg",
+  "face_178208.jpg",
+  "face_256814.jpg",
+  "face_279764.jpg"
+ ],
+ "tasks": {
+  "persons": {
+   "task_id": 11,
+   "job_id": 11,
+   "task_name": "persons-NguyenTheTung"
+  },
+  "faces": {
+   "task_id": 12,
+   "job_id": 12,
+   "task_name": "faces-NguyenTheTung"
+  }
+ }
+}
