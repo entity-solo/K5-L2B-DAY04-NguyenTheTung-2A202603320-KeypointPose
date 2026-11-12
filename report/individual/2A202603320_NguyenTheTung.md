@@ -161,3 +161,32 @@ Nguồn ảnh: COCO val2017 / Wikimedia Commons.
 - COCO Keypoint Detection format: Lin et al., Microsoft COCO: Common Objects in Context (2014).
 - Model & Framework: Ultralytics YOLOv8-Pose (COCO 17 keypoints), Google MediaPipe Tasks (Face Landmarker).
 - Công cụ AI hỗ trợ: Google Antigravity.
+
+## 10. Bonus (B1 & B2)
+
+### B1 — 3 ảnh người khó thêm (task `persons-extra-NguyenTheTung`)
+
+- File xuất: `src/exports/NguyenTheTung_bonus_persons.zip`
+- Số ảnh: 3 (`000000074156.jpg`, `000000465508.jpg`, `000000465765.jpg`)
+- Tổng số skeleton đã gán: 10 skeleton
+  - `000000074156.jpg`: 4 người (tư thế ngồi/vận động, người bên trái bị cắt khung một phần)
+  - `000000465508.jpg`: 3 người quay lưng hoàn toàn (các điểm mặt `nose`, `left_eye`, `right_eye` đặt cờ `v = 0` outside; các khớp tay chân xác định đúng theo chiều cơ thể)
+  - `000000465765.jpg`: 3 người (có người bắt chéo chân khi đứng, cờ đặt chuẩn xác)
+- Kết quả tự kiểm `src/check_submission.py`:
+  - Số [LỖI]: 0 · Số [CẢNH BÁO]: 2 (cảnh báo bắt chéo chân thực tế tại `000000074156.jpg` và `000000465765.jpg`)
+  - Kết quả: ĐẠT
+
+### B2 — 5 ảnh khuôn mặt đen trắng / hồng ngoại (task `faces-extra-NguyenTheTung`)
+
+- File xuất: `src/exports/NguyenTheTung_bonus_faces.zip`
+- Số ảnh: 5 (`face_102517.jpg`, `face_280788.jpg`, `face_344941.jpg`, `face_494518.jpg`, `face_507166.jpg`)
+- Tổng số skeleton đã gán: 5 khuôn mặt (mỗi mặt đủ 13 keypoint chuẩn `face`)
+- Kết quả tự kiểm `src/check_submission.py`:
+  - Số [LỖI]: 0 · Số [CẢNH BÁO]: 0
+  - Kết quả: ĐẠT (100% điểm hiển thị rõ ràng, đúng giải phẫu)
+
+**Đoạn nhận xét về ảnh không màu:**
+1. *Ảnh không màu khó hơn ở điểm nào?*
+   Khi thiếu thông tin kênh màu (RGB), độ tương phản giữa ranh giới các bộ phận khuôn mặt (như viền môi với da xung quanh, ranh giới mống mắt - củng mạc) bị suy giảm đáng kể, đặc biệt ở các vùng đổ bóng hoặc ánh sáng yếu. Người gán nhãn phải dựa nhiều hơn vào hình thái khối và kết cấu hình học của khuôn mặt thay vì sắc thái màu sắc để định vị chính xác tâm điểm.
+2. *Kính râm trên ảnh hồng ngoại có còn là `v = 1` không?*
+   Trong phổ hồng ngoại gần (Near-Infrared / NIR), nhiều loại tròng kính râm thông thường (vốn chặn tia UV và ánh sáng khả kiến) lại có độ truyền quang cao đối với bước sóng hồng ngoại. Do đó, mắt sau tròng kính râm có thể nhìn thấy rõ ràng trên ảnh cảm biến hồng ngoại. Nếu mắt lộ rõ không bị cản trở, cờ có thể chuyển thành `v = 2` (visible) thay vì `v = 1` (occluded). Tuy nhiên, nếu tròng kính có lớp tráng phủ phản xạ tia hồng ngoại khiến mắt vẫn bị che khuất thì vẫn phải giữ nguyên `v = 1` (occluded).
