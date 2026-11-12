@@ -62,20 +62,20 @@ Mã lỗi dùng đúng một trong: `lr_swap`, `vis_flag`, `position`, `missing`
 
 | Ảnh | Người / mặt | Điểm | Mã lỗi | Ghi chú | Đã sửa? |
 |---|---|---|---|---|---|
-| `face_279764.jpg` | Mặt tóc che #1 | `right_eye_outer` | `vis_flag` | Lọn tóc rủ che đuôi mắt phải, sửa từ v=2 sang v=1 | Rồi |
-| `face_256814.jpg` | Mặt kính râm #1 | `left_eye_inner` | `vis_flag` | Mắt sau kính râm, sửa cờ thành v=1 | Rồi |
-| `face_223746.jpg` | Mặt nghiêng #1 | `mouth_left` | `position` | Chỉnh lại khóe môi bên khuất cho khớp theo góc nghiêng giải phẫu | Rồi |
-| `000000438099.jpg` | Người nhỏ #1 | `all` | `ok` | Khung xương người nhỏ từ xa đã khớp tỷ lệ cơ thể | Rồi |
-| `000000130816.jpg` | Người trong đám đông #3 | `all` | `missing` | Người ở rìa phải bị che một phần thân, đã bổ sung khung xương | Rồi |
-| `000000210604.jpg` | Người quay lưng #1 | `left_wrist` | `lr_swap` | Nhầm tay trái với tay phải do nhìn từ sau lưng, đã đảo lại đúng phối cảnh người | Rồi |
-| `000000188804.jpg` | Người #1 | `right_ankle` | `position` | Người bắt chéo chân khi di chuyển, kéo lại điểm đúng tâm mắt cá chân | Rồi |
-| `000000163118.jpg` | Người quay lưng #2 | `nose`, `left_eye`, `right_eye` | `vis_flag` | Các điểm mặt bị che khuất khi quay lưng, đặt cờ outside (v=0) | Rồi |
+| `face_279764.jpg` | Mặt tóc che #1 | `all` | `ok` | Tất cả 13 điểm đều v=2, tóc không che điểm nào đáng kể, gán đúng ngay từ đầu không cần sửa | Rồi |
+| `face_256814.jpg` | Mặt kính râm #1 | `left_eye_outer`, `left_eye_inner`, `right_eye_inner`, `right_eye_outer`, `left_ear_tragion`, `right_ear_tragion`, `mouth_left`, `mouth_right` | `vis_flag` | Kính râm che toàn bộ mắt và một phần tai/miệng, đặt cờ v=1 (occluded) cho 8 điểm bị che | Rồi |
+| `face_223746.jpg` | Mặt nghiêng #1 | `left_ear_tragion`, `right_ear_tragion` | `vis_flag` | Mặt quay nghiêng, tai phía sau bị khuất hoàn toàn; đặt v=1 vì vẫn ước lượng được vị trí | Rồi |
+| `000000438099.jpg` | Người nhỏ xa #1 | `all` | `ok` | Người nhỏ ở xa, khung xương khớp tỷ lệ cơ thể, không phát hiện lỗi nào khi review lại | Rồi |
+| `000000130816.jpg` | Người trong đám đông #4 | `all` | `missing` | Người ở rìa khung bị che một phần thân dưới, ban đầu bỏ sót; đã bổ sung skeleton khi review | Rồi |
+| `000000210604.jpg` | Người quay lưng #2 | `left_wrist`, `right_wrist` | `lr_swap` | Nhìn từ sau lưng dễ nhầm trái/phải; trung tâm x các điểm trái nằm bên phải x các điểm phải — đã đảo lại đúng theo góc nhìn của người | Rồi |
+| `000000188804.jpg` | Người quay lưng #1 | `nose`, `left_eye`, `right_eye` | `vis_flag` | Người quay lưng hoàn toàn, ba điểm mặt không có căn cứ ước lượng, đặt v=0 (outside) | Rồi |
+| `000000163118.jpg` | Người quay lưng #1 | `nose`, `left_eye`, `right_eye`, `left_shoulder` | `vis_flag` | Người ném frisbee quay lưng, mặt và vai trái khuất hoàn toàn; đặt v=0 cho các điểm mặt, v=1 cho left_wrist vì vẫn ước lượng được | Rồi |
 
 Tổng hợp số lỗi theo mã:
 
 | `lr_swap` | `vis_flag` | `position` | `missing` | `extra` | `ok` |
 |---:|---:|---:|---:|---:|---:|
-| 1 | 3 | 2 | 1 | 0 | 1 |
+| 1 | 2 | 0 | 1 | 0 | 1 |
 
 Điểm còn phân vân giữa `v = 1` và `v = 0` (ghi cả hai lựa chọn và lý do chọn):
 
